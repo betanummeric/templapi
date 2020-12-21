@@ -12,7 +12,7 @@ except KeyError:
     print(f'please set the environment variable TEMPLAPI_DIR to a directory path for templates', file=sys.stderr)
     sys.exit(1)
 
-app = FastAPI(title='templapi', version='0.1.0')
+app = FastAPI(title='templapi', version='0.1.0', root_path=os.environ.get('TEMPLAPI_ROOT', ''))
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(searchpath=templates_dir), undefined=StrictUndefined)
 
 
